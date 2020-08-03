@@ -16,3 +16,5 @@ If you want to run the same protocol again at a later time, repeat steps 3-5. On
 
 ## Before starting: Connect robot and install OT App.
 First things first, before we start writing a protocol, let’s try to simply move the robot using the OT-1 App. First, we have to power and connect the robot. Plug the power cable into the power outlet and the usb cable into your laptop. Then press the power button (figure 2).
+
+![](media/powerUsb.png)
