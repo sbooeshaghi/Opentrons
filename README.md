@@ -3,6 +3,7 @@
 How to control the OT-1 lab robot?
 This file explains how to write protocols and how to run them with the Opentrons app. The repository furthermore contains additional example protocols and hardware ... files.
 
+<img src="media/OT1LabRobot.png" width="300"> *The OT-1 Lab robot*
 ## Overview
 The following steps summarize how to write and test protocol code and subsequently upload it to the opentrons robot for running . (These will be explained more elaborately further on):
 
@@ -66,3 +67,18 @@ pipette.transfer(100, plate.rows[0], plate.rows[1])
 
 ~~~
 
+*Code snippet of the example protocol*
+
+### Testing in jupyter notebooks
+
+To make sure you are using correct commands when writing the code, it is a good idea to use the opentrons python package and run the code in e.g. jupyter notebooks to see if you get any errors (the robot won’t work, but you can at least see if the code is correct).
+
+To install the package run:
+~~~
+>> pip install opentrons == 2.5.2
+~~~
+Once the package is installed you can start writing protocols. The example shown in Snippet 1 already contains the most important commands and the typical structure of a protocol:
+Adding the containers
+Adding the pipette(s)
+Specifying the commands
+A good overview of the opentrons API (for OT1) can be found here: https://docs.opentrons.com/ot1/index.html. Taking a look at these pages is probably the easiest method to go a long way in writing protocols.
