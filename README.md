@@ -124,11 +124,11 @@ pipette.transfer(100, plate.rows[0], plate.rows[1])
 <b> for c in robot.commands():
     print(c) </b>
 </pre>
-*Code of the example protocol with additional print statements*
+*Code of the example protocol with additional print statements (in bold)*
 
 These print statements can be removed in the eventual protocol (the robot just ignores them when running the protocol) but are a good first check of your code.  For this code the output becomes:
 
-<pre>
+~~~
 <Container plate> <Container tiprack>
 200
 Picking up tip from <WellSeries: <Well A1><Well B1><Well C1><Well D1><Well E1><Well F1><Well G1><Well H1>>
@@ -136,9 +136,9 @@ Aspirating 100.0 at <WellSeries: <Well A1><Well B1><Well C1><Well D1><Well E1><W
 Dispensing 100.0 at <WellSeries: <Well A2><Well B2><Well C2><Well D2><Well E2><Well F2><Well G2><Well H2>>
 Returning tip
 Drop_tip at <WellSeries: <Well A1><Well B1><Well C1><Well D1><Well E1><Well F1><Well G1><Well H1>>
-</pre>
+~~~
 *Output of code with additional print statements using jupyter notebooks*
 
 ## Step 2: convert protocol to script
-Once your protocol runs on jupyter notebooks, you make it into a python script. (I just paste it into a plain text document and add .py extension). The script has been uploaded in the folder
+Once your protocol runs on jupyter notebooks, you make it into a python script. (I just paste it into a plain text document and add .py extension). The script has been uploaded in the folder **`HARDWARD/protocols`**
 
