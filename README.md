@@ -140,5 +140,5 @@ Drop_tip at <WellSeries: <Well A1><Well B1><Well C1><Well D1><Well E1><Well F1><
 *Output of code with additional print statements using jupyter notebooks*
 
 ## Step 2: convert protocol to script
-Once your protocol runs on jupyter notebooks, you make it into a python script. (I just paste it into a plain text document and add .py extension). The script has been uploaded in the folder **`HARDWARD/protocols`**
+Once your protocol runs on jupyter notebooks, you make it into a python script. (I just paste it into a plain text document and add .py extension). The script has been uploaded in the folder `HARDWARE/protocols`
 
