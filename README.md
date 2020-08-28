@@ -145,13 +145,34 @@ Once your protocol runs on jupyter notebooks, you make it into a python script. 
 ## Step 3: upload protocol
 In the OT1 app you can now select the ‘Click to Upload’ button and upload your script to the app. The app will now identify the instruments you are using in the script and provide you with an interface to calibrate them. For this example you’ll have to calibrate the pipettes top, bottom, blowout and drop plunger positions and the positions of the tiprack and the 96 wells plate (see step 4). Of course this can only be done after attaching the pipette and placing the tiprack and 96-wells plate on the deck of the robot (see next section).
 
-FIGURE?!!?
-
 ## Intermezzo: Don’t forget the hardware
 ### Place containers and instruments
-Before we can calibrate, we must place the containers and attach the pipette. In this case, a Rainin 200 µl, 8 channel pipette was used. To make sure the pipette is attached rigidly, a 3D printed holder was made (stl file in the `HARDWARE/` folder). The tiprack and 96-wells plate are also placed in such a way that they can not move. (More on the topic of efficiently placing labware can be found in the materials folder document: labware fixation methods) A rigid placement of the labware will save you a lot of time calibrating.
+Before we can calibrate, we must place the containers and attach the pipette. In this case, a Rainin 200 µl, 8 channel pipette (https://www.mt.com/us/en/home/products/pipettes/manual-pipettes/multichannel-pipettes.html) was used. To make sure the pipette is attached rigidly, a 3D printed holder was made (stl file in the `HARDWARE/` folder). The tiprack and 96-wells plate are also placed in such a way that they can not move. (More on the topic of efficiently placing labware can be found in the materials folder document: labware fixation methods) A rigid placement of the labware will save you a lot of time calibrating.
 
 *Remark: The robot only knows about the instruments and containers declared in your script, so to make sure the robot isn’t going to collide, no unexpected objects should be on the deck.*
 
+<img src="media/OT1LabRobot.png" width="200"><img src="media/theDeck.png" width="200"><img src="media/theDeckDrawing.png" width="200">
+*the OT-1 robot with the containers and instruments on the right positions*
+
+## Step 4: Calibration
+### Pipette calibration
+The pipette is attached to the robot. We now have to calibrate the plunger positions and the maximum volume so that the robot has the information to handle the pipette.
+*Remark: I didn’t know a lot about pipettes so here is the very dry but useful explanation I found on youtube: https://www.youtube.com/watch?v=QGX490kuKjg*
+Pipette calibration is explained pretty well on this webpage, but I do have some remarks (written down below):
+https://support.opentrons.com/en/articles/689990-calibrating-the-pipettes
+
+Some remarks on pipette calibration:
+- I think the description for calibrating the pipettes top and bottom positions is good:
+    - Top: plunger is positioned almost all the way up (but still being pressed down just a tiny bit)
+    - Bottom: plunger is at or slightly above it’s “first-stop” or “soft-stop”
+
+    However I would change it for blow out and drop positions:
+    - Blow Out:  <s> plunger is all the way down to it's “second-stop” or “hard-stop”, making sure any attached tip do not get pushed off </s> --> plunger at the same position as bottom.
+    - Drop Tip --> Forces any attached tip to fall off. This should coincide with the plunger being all the way down to its “second-stop” or “hard-stop. 
+
+    The reason for these adjustments is that if you make ‘Blow Out’ coincide with the hard stop, any further movement of the motor will press the whole pipette down and it will cause strain and bending to the pipette and connecting parts. Since ‘Blow Out’ and ‘Bottom’ are now at the same position, there is no real blow out functionality anymore. *Remark: It makes sense because there is only one motor (read 1 degree of freedom) pressing down both the plunger and the ejector button.This should be fine however, to aspirate and dispense a specified amount of liquid, knowledge of top and bottom position is sufficient. Blow out is used to remove as much as possible of the remaining liquid in the tips (which normally is very little). Furthermore, when it is critical that the tips are completely clean it is maybe a better option to drop them and pick up a new set. (I learned this by talking to Taleen about pipettes, but if there are mistakes in this information then that’s highly likely me misinterpreting)*
+- Related to the previous remark: To make sure the ‘Drop Tip’ position will coincide with the hard stop it is important to adjust the ejector screw such that it will press the ejector button hard enough for the tips to drop when the plunger is at the hard stop.
+
+<img src="media/DropTip.png" width="300"> *When the plunger moves to hard stop position, the screw simultaneously pushes the ejector button to reach ‘drop tip’ position. *
 
 
