@@ -1,2 +1,2 @@
-Labware to deck attachment: alternative method
+## Labware to deck attachment: alternative method
 (by adding acrylic baseplate)
