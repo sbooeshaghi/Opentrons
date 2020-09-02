@@ -3,7 +3,7 @@
 How to control the OT-1 lab robot?
 This file explains how to write protocols and how to run them with the Opentrons app. The repository furthermore contains additional example protocols and hardware ... files.
 
-<img src="media/OT1LabRobot-min.png" width="300"> *The OT-1 Lab robot*
+<img src="media/OT1LabRobot-min (1) (1).png" width="300"> *The OT-1 Lab robot*
 ## Overview
 The following steps summarize how to write and test protocol code and subsequently upload it to the opentrons robot for running . (These will be explained more elaborately further on):
 
