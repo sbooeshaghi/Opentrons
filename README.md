@@ -20,7 +20,7 @@ First things first, before we start writing a protocol, let’s try to simply mo
 
 <img src="media/powerUsb.png" width="300"> *Connect to the power outlet and plug the usb cable in your laptop. Press the power button.*
 
-Secondly, download the Opentrons 1 App from the opentrons site: https://opentrons.com/ot-app/. *Remark: Make sure you download the OT-1 and not the OT-2 app.
+Secondly, download the Opentrons 1 App from the [opentrons site](https://opentrons.com/ot-app/). *Remark: Make sure you download the OT-1 and not the OT-2 app.
 Opentrons made 2 lab robots: The opentrons 1 and the opentrons 2. Opentrons 1 was, it seems, intended to be the prototype of opentrons 2. So most documentation you find on the opentrons website is on OT-2.* 
 When you open the app you get a screen that looks like this:
 <img src="media/OT1App.png" width="700">
