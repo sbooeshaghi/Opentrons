@@ -1,28 +1,27 @@
+## Use the Opentrons API's containers and instruments
 from opentrons import containers, instruments
 
-
+## PART I: Add containers and pipettes:
 # containers
-hairpinres = containers.load('96-PCR-flat', 'C3', 'hairpinres')
-refillstation = containers.load('96-PCR-flat', 'D3', 'refillstation')
+# Add a 96 well plate of 20 mm deep, and place it in slot 'C3'
+plate = containers.load('96-well-plate-20mm', 'C3', 'plate')
+# Add a refill reservoir in slot 'D3'
+refillres = containers.load('point', 'D3', 'refillres')
+# Add a 200uL tip rack, and place it in slot 'B3'
 tiprack = containers.load('tiprack-200ul', 'B3','tiprack')
+# Add a trash container in slot 'B2'
 trash = containers.load('point', 'B2', 'trash')
-#print(hairpinres,refillstation,tiprack,trash)
 
 # pipettes
+# Add a 200uL 8 channel pipette to axis 'a', and tell it to use that tip rack and trash container
 pipette = instruments.Pipette(
     axis='a', # weird difference between a and b
     channels=8, 
     max_volume=200, tip_racks=[tiprack],
     trash_container=trash)
 
-# strange: extra commands needed?
-#print('max_volume = ', pipette.max_volume)
-pipette.max_volume = 200
-#print('max_volume = ', pipette.max_volume)
-#print('channels = ', pipette.channels)
-#print('wells reservoir 1', reservoir1.rows[0:2])
-
+## PART II: Specify protocol
 # commands
-
-pipette.transfer(200, refillstation.rows[0], hairpinres.rows[0:12])
+# Transfer 200uL from the refill reservoir to the plate's first row of wells.
+pipette.transfer(200, refillres, plate.rows[0])
 
