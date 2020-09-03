@@ -4,8 +4,8 @@ from opentrons import containers, instruments
 
 ## PART I: Add containers and pipettes:
 # containers:
-# Add a 96 well plate, and place it in slot 'C3'
-plate = containers.load('96-flat', 'C3', 'plate')
+# Add a 96 well plate of 20 mm deep, and place it in slot 'C3'
+plate = containers.load('96-well-plate-20mm', 'C3', 'plate')
 # Add a 200uL tip rack, and place it in slot 'B3'
 tiprack = containers.load('tiprack-200ul', 'B3','tiprack')
 
