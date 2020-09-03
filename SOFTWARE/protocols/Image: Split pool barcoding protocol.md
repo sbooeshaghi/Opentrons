@@ -1,0 +1,1 @@
+[<img src="https://docs.google.com/drawings/d/1s5QHfnEp51puA-EM0dRq3Lt1DKOwjgXPsQVOSv0aLy8/export/png" width="800">](https://docs.google.com/drawings/d/1s5QHfnEp51puA-EM0dRq3Lt1DKOwjgXPsQVOSv0aLy8/edit)
