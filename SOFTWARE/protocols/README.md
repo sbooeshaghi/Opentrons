@@ -1,6 +1,6 @@
 ## Protocols
 
-This folder contains some prototypical protocols to run on the opentrons labrobot:
+This folder contains 3 protocols:
 * `Split pool barcoding protocol.py`: This protocol was made as a first attempt to implement split pool barcoding. An illustration of the robot's movements is given below:
     <img src="https://docs.google.com/drawings/d/1s5QHfnEp51puA-EM0dRq3Lt1DKOwjgXPsQVOSv0aLy8/export/png" width="300">
 
@@ -12,3 +12,4 @@ This folder contains some prototypical protocols to run on the opentrons labrobo
 
 * `refill.py` ([video](https://drive.google.com/file/d/1NyLzNw02rCrPFUXSi67Vc6YS1a4g1PVH/view?usp=sharing))
 
+Furthermore the 2 diagrams illustrating the protocols are included. And finally a jupyter notebook `Notebook: Split pool barcoding protocol.pynb` illustrates in an interactive manner how to create a protocol (as an alternative to the explanation in the main `README.md`.
