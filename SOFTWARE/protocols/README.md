@@ -7,4 +7,4 @@ This folder contains 3 protocols:
 
 * `refill_protocol.py` ([video](https://drive.google.com/file/d/1NyLzNw02rCrPFUXSi67Vc6YS1a4g1PVH/view?usp=sharing)): to run the example protocol, the first row of a 96-wells plate needs to be full. This protocol can take care of that. A diagram of the robot's movements is included in the folder.
 
-Furthermore, a jupyter notebook, `Notebook: Split pool barcoding protocol.pynb`, illustrates in an interactive manner how to create a protocol (as an alternative to the explanation in the main `README.md`).
+Furthermore, a jupyter notebook, `Split pool barcoding protocol.pynb`, illustrates in an interactive manner how to create a protocol (as an alternative to the explanation in the main `README.md`).
