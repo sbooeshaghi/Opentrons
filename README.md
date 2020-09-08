@@ -1,5 +1,6 @@
 # Opentrons
 
+## Intro and repository structure
 This repository is aimed to be a guide for working with the OT-1 lab robot.
 
 <img src="media/OT1LabRobot.png" width="300"> *The OT-1 Lab robot*
@@ -16,26 +17,30 @@ SOFTWARE/
 media/
 README.md
 ```
-This README file explains how to set up the robot, how to create a protocol, how to calibrate the robot and finally how to run the protocol on the robot. The repository furthermore contains 3 folders with additional documentation: The `HARDWARE` folder contains technical drawings of the robot, furthermore, some stl files and drawings are dedicated to *firm labware attachment* which is indispensible for good calibration. The `SOFTWARE` folder contains example protocols, accompanied with diagrams to explain them. Additionaly a python notebook is included to illustrate how to create a protocol with jupyter notebooks. Finally, the `media` folder contains pictures and gifs used for this README file. 
+This README file explains how to set up the robot, how to create a protocol, how to calibrate the robot and finally how to run the protocol on the robot. The repository furthermore contains 3 folders with additional documentation: The `HARDWARE` folder contains technical drawings of the robot. Furthermore, some stl files and drawings are dedicated to *firm labware attachment* which is indispensible for good calibration. The `SOFTWARE` folder contains example protocols, accompanied with diagrams to explain them. Additionaly, a python notebook is included to illustrate how to create a protocol with jupyter notebooks. Finally, the `media` folder contains pictures and gifs used for this README file. 
 
-## Overview
-The following steps summarize how to write and test protocol code and subsequently upload it to the opentrons robot for running . (These will be explained more elaborately further on):
+## Contents
+In this section, a quick overview of what follows is given:
 
-1. Write the code in jupyter notebook and test if it runs without errors. To be clear, at this point you are not running on the robot, you are simply simulating a run to see if the code doesn’t contain errors.
-1. Once you designed the desired protocol and the code runs without errors, you transform the notebook to a python script 
-1. Upload the python script to the Opentrons-One App
-1. Calibrate the instruments on the deck of the opentrons robot (the pipette and the position of the tipracks, wells,...)
-1. Run the protocol (by pressing the Run Job button in the Opentrons App)
+1. Connect robot and open the OT-1 app
+    - Connect robot
+    - Open/download the app
+    - Move the robot
+1. Write the protocol
+    - Create the protocol code in jupyter notebooks
+    - Create the completed protocol script
+1. Upload, calibrate and run
+    - Upload the protocol in the app
+    - Attach the labware to the robot
+    - Calibrate the labware
+    - Run the protocol
 
-If you want to run the same protocol again at a later time, repeat steps 3-5. One remark on recalibration (step 4): once you calibrate for a specific script, the app stores this calibration data, however it is good practice to check if all instruments still line up as expected.
-
-## Before starting: Connect robot and install OT App.
-First things first, before we start writing a protocol, let’s try to simply move the robot using the OT-1 App. First, we have to power and connect the robot. Plug the power cable into the power outlet and the usb cable into your laptop. Then press the power button.
+## 1. Connect robot and open the OT-1 app
+First, plug the power cable into the power outlet and the usb cable into your laptop. Then press the power button.
 
 <img src="media/powerUsb.png" width="300"> *Connect to the power outlet and plug the usb cable in your laptop. Press the power button.*
 
-Secondly, download the Opentrons 1 App from the [opentrons site](https://opentrons.com/ot-app/). *Remark: Make sure you download the OT-1 and not the OT-2 app.
-Opentrons made 2 lab robots: The opentrons 1 and the opentrons 2. Opentrons 1 was, it seems, intended to be the prototype of opentrons 2. So most documentation you find on the opentrons website is on OT-2.* 
+Secondly, open the Opentrons 1 App. If you don't have it downloaded yet,download the app from the [opentrons site](https://opentrons.com/ot-app/). *Remark: Make sure you download the OT-1 and not the OT-2 app.(OT-1 is in fact the prototype of OT-2. So most documentation you find on the opentrons website is on OT-2.)* 
 When you open the app you get a screen that looks like this:
 <img src="media/OT1App.png" width="700">
 *The layout of the OT-1 App.*
@@ -48,7 +53,8 @@ If all went well, you can now play with the buttons and move the robot around. X
 
 <img src="media/Jog.gif" width="400"> *Controlling the plunger.*
 
-## Step 1: write protocol
+## 2. Write the protocol
+Protocols are used to pass on subsequent steps that make up a certain experiment to the robot. 
 We will consider a simple test code which uses an 8-channel 200 µl pipette to transfer 100 µl of liquid from the first to the second row of a 200 µl 96-wells plate.
 
 <img src="media/theDeckDrawing.png" width="300">*Illustration of the example protocol*
@@ -101,7 +107,7 @@ A good overview of the opentrons API (for OT1) can be found here: https://docs.o
 *Remark: When adding a container it is important to choose a container that has the exact right dimensions to avoid collisions with the robot. E.g. The '96-well-plate-20mm' is well specified because ‘96-well’ plates have standard well positions and the depth is in this case 20 mm. The dimensions of this plate correspond exactly to the dimensions of the physical plate used in the example.  A list of all built in containers can be found here: https://docs.opentrons.com/ot1/containers.html#labware-library. It is also possible to make your own custom containers.
 * 
 
-### Adding print commands
+#### Adding print commands
 While testing the protocol you can add some print statements to get additional feedback on the code. A useful tool is the robot package from which you can print the robot commands. 
 
 <pre>
@@ -153,7 +159,7 @@ Drop_tip at <WellSeries: <Well A1><Well B1><Well C1><Well D1><Well E1><Well F1><
 ~~~
 *Output of code with additional print statements using jupyter notebooks*
 
-## Step 2: convert protocol to script
+### Create the protocol script
 Once your protocol runs on jupyter notebooks, you make it into a python script. (I just paste it into a plain text document and add .py extension). The script has been uploaded in the folder `SOFTWARE/protocols/`
 
 ## Step 3: upload protocol
