@@ -40,5 +40,6 @@ media/
 |--> Jog.gif
 |--> OT1App.png
 |--> ...
+|--> README.md
 README.md
 ```
