@@ -170,25 +170,22 @@ Once your protocol runs as expected on jupyter notebooks, you make it into a pyt
 
 ## 3. Upload, calibrate and run
 ### Upload the protocol in the app
-In the OT1 app you can now select the ‘Click to Upload’ button and upload your script to the app. The app will now identify the instruments you are using in the script and provide you with an interface to calibrate them. For this example you’ll have to calibrate the pipettes top, bottom, blowout and drop plunger positions and the positions of the tiprack and the 96 wells plate (see step 4). Of course this can only be done after attaching the pipette and placing the tiprack and 96-wells plate on the deck of the robot (see next section).
+In the OT-1 app you can now select the ‘Click to Upload’ button and upload your script to the app. 
 
 ### Attach the labware to the robot
-#### Place containers and instruments
-Before we can calibrate, we must place the containers and attach the pipette. In this case, a Rainin 200 µl, 8 channel pipette (https://www.mt.com/us/en/home/products/pipettes/manual-pipettes/multichannel-pipettes.html) was used. To make sure the pipette is attached rigidly, a 3D printed holder was made (stl file in the `HARDWARE/` folder). The tiprack and 96-wells plate are also placed in such a way that they can not move. (More on the topic of efficiently placing labware can be found in the materials folder document: labware fixation methods) A rigid placement of the labware will save you a lot of time calibrating.
+Before we can calibrate, we must place the containers and attach the pipette. In this case, a [Rainin 200 µl, 8 channel pipette](https://www.mt.com/us/en/home/products/pipettes/manual-pipettes/multichannel-pipettes.html) was used. To make sure the pipette is attached rigidly, a 3D printed holder was made (stl file in the `HARDWARE/stl files/` folder). The tiprack and 96-wells plate are also placed in such a way that they can not move. Documentation on the topic of efficiently placing labware is located in `HARDWARE/`. A rigid placement of the labware will save a of time calibrating.
 
-*Remark: The robot only knows about the instruments and containers declared in your script, so to make sure the robot isn’t going to collide, no unexpected objects should be on the deck.*
+*Remark: The robot only knows about the instruments and containers declared in your script. To prevent collisions, no unexpected objects should be on the deck.*
 
 <img src="media/OT1LabRobot.png" width="200"><img src="media/theDeck.png" width="200"><img src="media/theDeckDrawing.png" width="200">
-*the OT-1 robot with the containers and instruments on the right positions*
+*the OT-1 robot with the containers and pipette on the right positions*
 
 ### Calibrate the labware
+Once the protocol has been uploaded, the app will identify the instruments used in the script and provide you with an interface to calibrate them. For this example, you’ll have to calibrate the pipettes top, bottom, blowout and drop plunger positions and the positions of the tiprack and the 96 wells plate. Of course this can only be done after attaching the pipette and placing the tiprack and 96-wells plate on the deck of the robot.
 #### Pipette calibration
 The pipette is attached to the robot. We now have to calibrate the plunger positions and the maximum volume so that the robot has the information to handle the pipette.
-*Remark: I didn’t know a lot about pipettes so here is the very dry but useful explanation I found on youtube: https://www.youtube.com/watch?v=QGX490kuKjg*
-Pipette calibration is explained pretty well on this webpage, but I do have some remarks (written down below):
-https://support.opentrons.com/en/articles/689990-calibrating-the-pipettes
-
-Some remarks on pipette calibration:
+*Remark: some dry explanation on handling pipettes for novices can be found [here](https://www.youtube.com/watch?v=QGX490kuKjg)*
+Pipette calibration is explained pretty well on this [webpage](https://support.opentrons.com/en/articles/689990-calibrating-the-pipettes), but I do have the following remarks:
 - I think the description for calibrating the pipettes top and bottom positions is good:
     - Top: plunger is positioned almost all the way up (but still being pressed down just a tiny bit)
     - Bottom: plunger is at or slightly above it’s “first-stop” or “soft-stop”
@@ -205,8 +202,7 @@ Some remarks on pipette calibration:
 #### Container calibration
 The containers have now been placed on the robot deck. The dimensions of the containers are known and specified in the script. Now the only thing that remains is to determine their exact position. The position has to be specified perfectly to avoid collisions. This is done in the calibration process. 
 
-Calibration of containers is very well explained on this webpage:
-https://support.opentrons.com/en/articles/689977-calibrating-the-deck
+Calibration of containers is very well explained on this [webpage](https://support.opentrons.com/en/articles/689977-calibrating-the-deck).
 
 ### Run the protocol
 Press the Run Job button in the Opentrons App:
