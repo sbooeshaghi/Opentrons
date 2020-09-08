@@ -184,13 +184,14 @@ Before we can calibrate, we must place the containers and attach the pipette. In
 Once the protocol has been uploaded, the app will identify the instruments used in the script and provide you with an interface to calibrate them. For this example, you’ll have to calibrate the pipettes top, bottom, blowout and drop plunger positions and the positions of the tiprack and the 96 wells plate. Of course this can only be done after attaching the pipette and placing the tiprack and 96-wells plate on the deck of the robot.
 #### Pipette calibration
 For the pipette, we need to calibrate the plunger positions and set the volume range such that the robot has all the information to handle the pipette. *Remark: some dry but useful explanation on handling pipettes for novices can be found [here](https://www.youtube.com/watch?v=QGX490kuKjg).*
+
 Opentrons explains pipette calibration quite well on this [webpage](https://support.opentrons.com/en/articles/689990-calibrating-the-pipettes). However, I do have the following remarks:
 - I think the description for calibrating the pipettes top and bottom positions is good:
     - Top: plunger is positioned almost all the way up (but still being pressed down just a tiny bit)
     - Bottom: plunger is at or slightly above its “first-stop” or “soft-stop”
 
     However, I would change the descriptions to set blow out and drop positions:
-    - Blow Out:  <s> plunger is all the way down to it's “second-stop” or “hard-stop”, making sure any attached tip do not get pushed off </s>  plunger at the same position as bottom.
+    - Blow Out:  <s> plunger is all the way down to it's “second-stop” or “hard-stop”, making sure any attached tip do not get pushed off </s>. plunger at the same position as bottom.
     - Drop Tip: Forces any attached tip to fall off. This should coincide with the plunger being all the way down to its “second-stop” or “hard-stop. 
 
     The reason for these adjustments is that if you make ‘Blow Out’ coincide with the hard stop, any further movement of the motor will press the whole pipette down and it will cause strain and bending to the pipette and connecting parts. Note that since ‘Blow Out’ and ‘Bottom’ are now at the same position, there is no real blow out functionality anymore. *Remark: This makes sense because there is only one motor (read: 1 degree of freedom) pressing down both the plunger and the ejector button. This shouldn't pose a big problem, to aspirate and dispense a specified amount of liquid, knowledge of top and bottom position is sufficient. Traditionally, blow out is used to remove as much as possible of the remaining liquid in the tips (which normally is very little). When it is critical that the tips are completely clean we can drop them and pick up a new set.*
@@ -200,12 +201,11 @@ Opentrons explains pipette calibration quite well on this [webpage](https://supp
 #### Container calibration
 The containers have now been placed on the robot deck. The dimensions of the containers are known and specified in the script. Now the only thing that remains is to determine their exact position. The position has to be specified perfectly to avoid collisions. This is done in the calibration process. 
 
-Calibration of containers is very well explained on this [webpage](https://support.opentrons.com/en/articles/689977-calibrating-the-deck).
+Opentrons explains calibration of containers very well on this [webpage](https://support.opentrons.com/en/articles/689977-calibrating-the-deck).
 
 ### Run the protocol
-Press the Run Job button in the Opentrons App:
-Gif or link to a speed up movie of the robot running the job
-**movie**
+Press the Run Job button in the Opentrons App.
+([video](https://drive.google.com/file/d/1IdHP-5DXYBkbdMaAbL4stZ4RvGIAhJ0E/view?usp=sharing): best adjust the quality to 1080p.)
 
 
 
