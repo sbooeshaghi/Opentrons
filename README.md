@@ -1,57 +1,22 @@
 # Opentrons
 
 This repository is aimed to be a guide for working with the OT-1 lab robot.
+
 <img src="media/OT1LabRobot.png" width="300"> *The OT-1 Lab robot*
+
 The structure of the repository is as follows:
 ```
 HARDWARE/
 |
 |--> drawings/
-     |
-     |--> Labware to deck attachment: alternative method/
-          |
-          |--> Acrylic deck design.md
-          |--> Acrylic plate designs for labware attachment.md
-          |--> README.md
-     |--> Labware to deck attachment: initial method/
-          |
-          |--> 3D printed option for tiprack attachment.md
-          |--> Acrylic plate designs for labware attachment.md
-          |--> README.md
-     |--> 96 wells.md
-     |--> README.md
-     |--> Slots.md
 |--> stl files/
-     |
-     |--> README.md
-     |--> pipetteholderv5.stl
-     |--> tiprackfixerv3.stl
-|--> README.md
 SOFTWARE/
 |
 |--> protocols/
-     |
-     |--> Diagram: Example protocol.md
-     |--> Diagram: Refill protocol.md
-     |--> Diagram: Split pool barcoding protocol.md
-     |--> README.md
-     |--> Split pool barcoding protocol.ipynb
-     |--> Split pool barcoding protocol.py
-     |--> example_protocol.py
-     |--> refill_protocol.py
-|--> README.md
 media/
-|
-|--> Jog.gif
-|--> OT1App.png
-|--> ...
 README.md
 ```
-
-
-How to control the OT-1 lab robot?
-This file explains how to write protocols and how to run them with the Opentrons app. The repository furthermore contains additional example protocols and hardware ... files.
-
+This README file explains how to set up the robot, how to create a protocol, how to calibrate the robot and finally how to run the protocol on the robot. The repository furthermore contains 3 folders with additional documentation: The `HARDWARE` folder contains technical drawings of the robot, furthermore, some stl files and drawings are dedicated to *firm labware attachment* which is indispensible for good calibration. The `SOFTWARE` folder contains example protocols, accompanied with diagrams to explain them. Additionaly a python notebook is included to illustrate how to create a protocol with jupyter notebooks. Finally, the `media` folder contains pictures and gifs used for this README file. 
 
 ## Overview
 The following steps summarize how to write and test protocol code and subsequently upload it to the opentrons robot for running . (These will be explained more elaborately further on):
