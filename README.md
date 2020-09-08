@@ -27,8 +27,8 @@ In this section, a quick overview of what follows is given:
     - Open/download the app
     - Move the robot
 1. Write the protocol
-    - Create the protocol code in jupyter notebooks
-    - Create the completed protocol script
+    - Test the protocol code in jupyter notebooks
+    - Create the protocol script
 1. Upload, calibrate and run
     - Upload the protocol in the app
     - Attach the labware to the robot
@@ -89,26 +89,27 @@ pipette.transfer(100, plate.rows[0], plate.rows[1])
 
 *Code of the example protocol*
 
-### Testing in jupyter notebooks
+The code shown above already contains the most important commands and the typical structure of a protocol:
+* Part I: 
+    * Adding the containers
+    * Adding the pipette(s)
+* Part II: Specifying the commands
 
-To make sure you are using correct commands when writing the code, it is a good idea to use the opentrons python package and run the code in e.g. jupyter notebooks to see if you get any errors (the robot won’t work, but you can at least see if the code runs).
+A good overview of the opentrons API (for OT1) can be found [here](https://docs.opentrons.com/ot1/index.html). Taking a look at these pages is probably the easiest method to go a long way in writing protocols.
+
+*Remark: When adding a container it is important to choose a container that has the exact right dimensions to avoid collisions with the robot. E.g. The '96-well-plate-20mm' is well specified because ‘96-well’ plates have standard well positions and the depth is in this case 20 mm. The dimensions of this plate correspond exactly to the dimensions of the physical plate used in the example.  A list of all built in containers can be found here: https://docs.opentrons.com/ot1/containers.html#labware-library. It is also possible to make your own custom containers.* 
+
+### Test the protocol code in jupyter notebooks
+
+To make sure you are using correct commands when writing the code, it is a good idea to use the opentrons python package and testrun the code in e.g. jupyter notebooks to see if you get any errors (the robot won’t work, but you can at least see if the code runs).
 
 To install the package run:
 ~~~
 >> pip install opentrons == 2.5.2
 ~~~
-Once the package is installed you can start writing protocols. The example shown in Snippet 1 already contains the most important commands and the typical structure of a protocol:
-* Adding the containers
-* Adding the pipette(s)
-* Specifying the commands
+in the terminal (this is the OT-1 version).
 
-A good overview of the opentrons API (for OT1) can be found here: https://docs.opentrons.com/ot1/index.html. Taking a look at these pages is probably the easiest method to go a long way in writing protocols.
-
-*Remark: When adding a container it is important to choose a container that has the exact right dimensions to avoid collisions with the robot. E.g. The '96-well-plate-20mm' is well specified because ‘96-well’ plates have standard well positions and the depth is in this case 20 mm. The dimensions of this plate correspond exactly to the dimensions of the physical plate used in the example.  A list of all built in containers can be found here: https://docs.opentrons.com/ot1/containers.html#labware-library. It is also possible to make your own custom containers.
-* 
-
-#### Adding print commands
-While testing the protocol you can add some print statements to get additional feedback on the code. A useful tool is the robot package from which you can print the robot commands. 
+While testing the protocol you can now add some print statements to get additional feedback on the code. A useful tool is the robot package from which you can print the robot commands. 
 
 <pre>
 
@@ -159,14 +160,17 @@ Drop_tip at <WellSeries: <Well A1><Well B1><Well C1><Well D1><Well E1><Well F1><
 ~~~
 *Output of code with additional print statements using jupyter notebooks*
 
-### Create the protocol script
-Once your protocol runs on jupyter notebooks, you make it into a python script. (I just paste it into a plain text document and add .py extension). The script has been uploaded in the folder `SOFTWARE/protocols/`
+*Remark: As an alternative to this explanation, the folder `SOFTWARE/protocols/` contains a python notebook to explain the creation of protocols with jupyter notebooks more interactively.*
 
-## Step 3: upload protocol
+### Create the protocol script
+Once your protocol runs as expected on jupyter notebooks, you make it into a python script. (Simply paste it into a plain text document and add .py extension). This example protocol has been uploaded in the folder `SOFTWARE/protocols/`.
+
+## 3. Upload, calibrate and run
+### Upload the protocol in the app
 In the OT1 app you can now select the ‘Click to Upload’ button and upload your script to the app. The app will now identify the instruments you are using in the script and provide you with an interface to calibrate them. For this example you’ll have to calibrate the pipettes top, bottom, blowout and drop plunger positions and the positions of the tiprack and the 96 wells plate (see step 4). Of course this can only be done after attaching the pipette and placing the tiprack and 96-wells plate on the deck of the robot (see next section).
 
-## Intermezzo: Don’t forget the hardware
-### Place containers and instruments
+### Attach the labware to the robot
+#### Place containers and instruments
 Before we can calibrate, we must place the containers and attach the pipette. In this case, a Rainin 200 µl, 8 channel pipette (https://www.mt.com/us/en/home/products/pipettes/manual-pipettes/multichannel-pipettes.html) was used. To make sure the pipette is attached rigidly, a 3D printed holder was made (stl file in the `HARDWARE/` folder). The tiprack and 96-wells plate are also placed in such a way that they can not move. (More on the topic of efficiently placing labware can be found in the materials folder document: labware fixation methods) A rigid placement of the labware will save you a lot of time calibrating.
 
 *Remark: The robot only knows about the instruments and containers declared in your script, so to make sure the robot isn’t going to collide, no unexpected objects should be on the deck.*
@@ -174,8 +178,8 @@ Before we can calibrate, we must place the containers and attach the pipette. In
 <img src="media/OT1LabRobot.png" width="200"><img src="media/theDeck.png" width="200"><img src="media/theDeckDrawing.png" width="200">
 *the OT-1 robot with the containers and instruments on the right positions*
 
-## Step 4: Calibration
-### Pipette calibration
+### Calibrate the labware
+#### Pipette calibration
 The pipette is attached to the robot. We now have to calibrate the plunger positions and the maximum volume so that the robot has the information to handle the pipette.
 *Remark: I didn’t know a lot about pipettes so here is the very dry but useful explanation I found on youtube: https://www.youtube.com/watch?v=QGX490kuKjg*
 Pipette calibration is explained pretty well on this webpage, but I do have some remarks (written down below):
@@ -195,16 +199,16 @@ Some remarks on pipette calibration:
 
 <img src="media/pipetteJog.png" width="200"> *When the plunger moves to hard stop position, the screw simultaneously pushes the ejector button to reach ‘drop tip’ position.*
 
-### Container calibration
+#### Container calibration
 The containers have now been placed on the robot deck. The dimensions of the containers are known and specified in the script. Now the only thing that remains is to determine their exact position. The position has to be specified perfectly to avoid collisions. This is done in the calibration process. 
 
 Calibration of containers is very well explained on this webpage:
 https://support.opentrons.com/en/articles/689977-calibrating-the-deck
 
-## Step 5: Run the protocol
+### Run the protocol
 Press the Run Job button in the Opentrons App:
 Gif or link to a speed up movie of the robot running the job
-
+**movie**
 
 
 
