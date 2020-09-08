@@ -36,11 +36,13 @@ In this section, a quick overview of what follows is given:
     - Run the protocol
 
 ## 1. Connect robot and open the OT-1 app
-First, plug the power cable into the power outlet and the usb cable into your laptop. Then press the power button.
+### Connect robot
+Plug the power cable into the power outlet and the usb cable into your laptop. Then press the power button.
 
 <img src="media/powerUsb.png" width="300"> *Connect to the power outlet and plug the usb cable in your laptop. Press the power button.*
 
-Secondly, open the Opentrons 1 App. If you don't have it downloaded yet,download the app from the [opentrons site](https://opentrons.com/ot-app/). *Remark: Make sure you download the OT-1 and not the OT-2 app.(OT-1 is in fact the prototype of OT-2. So most documentation you find on the opentrons website is on OT-2.)* 
+### Open/download the OT-1 app
+Open the Opentrons 1 App. If you don't have it downloaded yet, download the app from the [opentrons site](https://opentrons.com/ot-app/). *Remark: Make sure you download the OT-1 and not the OT-2 app.(OT-1 is in fact the prototype of OT-2. So most documentation you find on the opentrons website is on OT-2.)* 
 When you open the app you get a screen that looks like this:
 <img src="media/OT1App.png" width="700">
 *The layout of the OT-1 App.*
@@ -49,6 +51,7 @@ You want to select the port that has a name similar to:
   */dev/tty.usbmodemFD121*
 Then the app will suggest to home the robot. If you press ok, the robot will move to its home position.
 
+### Move the robot
 If all went well, you can now play with the buttons and move the robot around. X,Y and Z coordinates are controlled through the Pipette Jog buttons. The Plunger Jog buttons are responsible for moving the pipette plunger following a system as shown in gif below:
 
 <img src="media/Jog.gif" width="400"> *Controlling the plunger.*
@@ -89,7 +92,7 @@ pipette.transfer(100, plate.rows[0], plate.rows[1])
 
 *Code of the example protocol*
 
-The code shown above already contains the most important commands and the typical structure of a protocol:
+The code above already contains the most important commands and the typical structure of a protocol:
 * Part I: 
     * Adding the containers
     * Adding the pipette(s)
@@ -97,7 +100,7 @@ The code shown above already contains the most important commands and the typica
 
 A good overview of the opentrons API (for OT1) can be found [here](https://docs.opentrons.com/ot1/index.html). Taking a look at these pages is probably the easiest method to go a long way in writing protocols.
 
-*Remark: When adding a container it is important to choose a container that has the exact right dimensions to avoid collisions with the robot. E.g. The '96-well-plate-20mm' is well specified because ‘96-well’ plates have standard well positions and the depth is in this case 20 mm. The dimensions of this plate correspond exactly to the dimensions of the physical plate used in the example.  A list of all built in containers can be found here: https://docs.opentrons.com/ot1/containers.html#labware-library. It is also possible to make your own custom containers.* 
+*Remark: When adding a container it is important to choose a container that has the exact right dimensions to avoid collisions with the robot. E.g. The '96-well-plate-20mm' is well specified because ‘96-well’ plates have standard well positions and the depth is in this case 20 mm. The dimensions of this plate correspond exactly to the dimensions of the physical plate used in the example.  A list of the most common built in containers can be found [here](https://docs.opentrons.com/ot1/containers.html#labware-library). It is also possible to make your own custom containers.* 
 
 ### Test the protocol code in jupyter notebooks
 
