@@ -1,4 +1,4 @@
-# Opentrons
+# Opentrons OT-1 Lab robot
 
 ## Intro and repository structure
 This repository is aimed to be a guide for working with the OT-1 lab robot.
@@ -183,18 +183,18 @@ Before we can calibrate, we must place the containers and attach the pipette. In
 ### Calibrate the labware
 Once the protocol has been uploaded, the app will identify the instruments used in the script and provide you with an interface to calibrate them. For this example, you’ll have to calibrate the pipettes top, bottom, blowout and drop plunger positions and the positions of the tiprack and the 96 wells plate. Of course this can only be done after attaching the pipette and placing the tiprack and 96-wells plate on the deck of the robot.
 #### Pipette calibration
-The pipette is attached to the robot. We now have to calibrate the plunger positions and the maximum volume so that the robot has the information to handle the pipette.
-*Remark: some dry explanation on handling pipettes for novices can be found [here](https://www.youtube.com/watch?v=QGX490kuKjg)*
-Pipette calibration is explained pretty well on this [webpage](https://support.opentrons.com/en/articles/689990-calibrating-the-pipettes), but I do have the following remarks:
+For the pipette, we need to calibrate the plunger positions and set the volume range such that the robot has all the information to handle the pipette. *Remark: some dry but useful explanation on handling pipettes for novices can be found [here](https://www.youtube.com/watch?v=QGX490kuKjg).*
+
+Opentrons explains pipette calibration quite well on this [webpage](https://support.opentrons.com/en/articles/689990-calibrating-the-pipettes), however I do have the following remarks:
 - I think the description for calibrating the pipettes top and bottom positions is good:
     - Top: plunger is positioned almost all the way up (but still being pressed down just a tiny bit)
-    - Bottom: plunger is at or slightly above it’s “first-stop” or “soft-stop”
+    - Bottom: plunger is at or slightly above its “first-stop” or “soft-stop”
 
-    However I would change it for blow out and drop positions:
+    However I would change the descriptions to set blow out and drop positions:
     - Blow Out:  <s> plunger is all the way down to it's “second-stop” or “hard-stop”, making sure any attached tip do not get pushed off </s> --> plunger at the same position as bottom.
     - Drop Tip --> Forces any attached tip to fall off. This should coincide with the plunger being all the way down to its “second-stop” or “hard-stop. 
 
-    The reason for these adjustments is that if you make ‘Blow Out’ coincide with the hard stop, any further movement of the motor will press the whole pipette down and it will cause strain and bending to the pipette and connecting parts. Since ‘Blow Out’ and ‘Bottom’ are now at the same position, there is no real blow out functionality anymore. *Remark: It makes sense because there is only one motor (read 1 degree of freedom) pressing down both the plunger and the ejector button.This should be fine however, to aspirate and dispense a specified amount of liquid, knowledge of top and bottom position is sufficient. Blow out is used to remove as much as possible of the remaining liquid in the tips (which normally is very little). Furthermore, when it is critical that the tips are completely clean it is maybe a better option to drop them and pick up a new set. (I learned this by talking to Taleen about pipettes, but if there are mistakes in this information then that’s highly likely me misinterpreting)*
+    The reason for these adjustments is that if you make ‘Blow Out’ coincide with the hard stop, any further movement of the motor will press the whole pipette down and it will cause strain and bending to the pipette and connecting parts. Note that since ‘Blow Out’ and ‘Bottom’ are now at the same position, there is no real blow out functionality anymore. *Remark: This makes sense because there is only one motor (read: 1 degree of freedom) pressing down both the plunger and the ejector button. This shouldn't pose a big problem, to aspirate and dispense a specified amount of liquid, knowledge of top and bottom position is sufficient. Traditionally, blow out is used to remove as much as possible of the remaining liquid in the tips (which normally is very little). When it is critical that the tips are completely clean we can drop them and pick up a new set.*
 - Related to the previous remark: To make sure the ‘Drop Tip’ position will coincide with the hard stop it is important to adjust the ejector screw such that it will press the ejector button hard enough for the tips to drop when the plunger is at the hard stop.
 
 <img src="media/pipetteJog.png" width="200"> *When the plunger moves to hard stop position, the screw simultaneously pushes the ejector button to reach ‘drop tip’ position.*
