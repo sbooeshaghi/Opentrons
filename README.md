@@ -108,7 +108,7 @@ To make sure you are using correct commands when writing the code, it is a good 
 
 To install the package run:
 ~~~
->> pip install opentrons == 2.5.2
+>> pip install opentrons==2.5.2
 ~~~
 in the terminal (this is the OT-1 version).
 
